@@ -12,7 +12,7 @@
 // audio stream. We leave the emptied element in place (rather than removing it)
 // so Instagram's scroll layout is left undisturbed while you scroll.
 
-const VERSION = "0.4";
+const VERSION = "1.0";
 const KEEP_ALIVE = 5; // reels kept alive behind the viewport
 
 const reaped = new WeakSet();
@@ -50,14 +50,15 @@ function reapBeyondBuffer() {
   return count;
 }
 
-// --- On-page panel so counts are visible without DevTools ---
+// --- Debug panel: hidden by default, toggled with Alt+Shift+R for testing.
+// The reaper runs regardless of whether the panel is visible. ---
 
 const panel = document.createElement("div");
 panel.style.cssText = [
   "position:fixed", "bottom:16px", "left:16px", "z-index:2147483647",
   "background:#1a1a1a", "color:#eee", "font:13px/1.4 monospace",
   "padding:10px 12px", "border-radius:8px", "box-shadow:0 2px 12px rgba(0,0,0,.5)",
-  "min-width:220px"
+  "min-width:220px", "display:none"
 ].join(";");
 
 const title = document.createElement("div");
@@ -84,6 +85,13 @@ panel.appendChild(title);
 panel.appendChild(stats);
 panel.appendChild(button);
 document.body.appendChild(panel);
+
+// Toggle the debug panel with Alt+Shift+R (event.code is keyboard-layout safe).
+window.addEventListener("keydown", (e) => {
+  if (e.altKey && e.shiftKey && e.code === "KeyR") {
+    panel.style.display = panel.style.display === "none" ? "block" : "none";
+  }
+});
 
 function refresh() {
   const videos = Array.from(document.querySelectorAll("video"));
