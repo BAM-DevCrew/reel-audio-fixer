@@ -1,0 +1,6 @@
+# Build artifacts (the packaged upload goes to AMO, not the repo)
+*.zip
+*.xpi
+
+# OS cruft
+.DS_Store

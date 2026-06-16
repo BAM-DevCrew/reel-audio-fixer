@@ -1,0 +1,49 @@
+Reel Audio Fixer — addons.mozilla.org listing copy
+==================================================
+
+NAME
+  Reel Audio Fixer
+
+SUMMARY  (AMO max ~250 characters)
+  Instagram Reels leak an audio stream for every video you scroll past, until
+  Firefox runs out and your sound dies. Reel Audio Fixer bounds the leak so your
+  audio keeps working — no matter how long you scroll.
+
+CATEGORY
+  Photos, Music & Videos        (alternate: Other)
+
+TAGS
+  instagram, reels, audio, sound, video, performance, memory
+
+DATA COLLECTION  (AMO submission asks this)
+  Does not collect any data. The extension runs entirely on the page and
+  sends nothing anywhere — no network requests, no storage of user data.
+
+DESCRIPTION
+  Scrolling Instagram Reels in Firefox slowly kills your sound.
+
+  Instagram opens a new audio stream for every Reel you scroll past and never
+  closes them. They pile up as idle streams until Firefox can't open new ones —
+  and your audio stops working until you restart the browser. It's a real,
+  long-standing bug in Firefox's audio engine (Mozilla bugs 1602345 and
+  1851747) and it affects every Firefox-based browser.
+
+  Reel Audio Fixer bounds the leak. As you scroll, it keeps the last few Reels
+  behind you alive and releases the audio streams of older ones, so the number
+  of open streams plateaus instead of climbing without limit. Your sound keeps
+  working no matter how long you scroll.
+
+  - Works silently in the background — no setup, no configuration.
+  - Never touches the Reel you're watching or Reels ahead, so playback and
+    forward scrolling are never interrupted.
+  - Keeps a 5-Reel buffer, so scrolling back a little still works instantly.
+
+  Trade-off: if you scroll back more than 5 Reels, the older ones show gray and
+  need a page reload. This is deliberate — infinite scroll is a forward
+  experience, and a small buffer keeps memory use bounded.
+
+  Open source (MIT). Source and issues:
+  https://github.com/BAM-DevCrew/reel-audio-fixer
+
+HOMEPAGE / SUPPORT URL
+  https://github.com/BAM-DevCrew/reel-audio-fixer
