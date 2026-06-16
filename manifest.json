@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Reel Audio Fixer",
+  "version": "0.4",
+  "description": "Stops Instagram reels from leaking audio streams so your sound keeps working during long scrolling sessions.",
+  "content_scripts": [
+    {
+      "matches": ["*://*.instagram.com/*"],
+      "js": ["reaper.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
